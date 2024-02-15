@@ -37,6 +37,8 @@ const UserBookings = () => {
   }
 
   const handleOpenRazorpay = (data) => {
+    console.log(data, "45");
+
     const options = {
       key: "rzp_test_Vg2BUBiHC0s56u",
       amount: Number(data.amount),
@@ -45,21 +47,21 @@ const UserBookings = () => {
       name: "Shopping AMCC",
 
       handler: function (response) {
-        console.log(response, "------33");
+        console.log(response, "------23");
         const resData = {
           razorpay_order_id: response.razorpay_order_id,
           razorpay_payment_id: response.razorpay_payment_id,
           razorpay_signature: response.razorpay_signature,
           order_id: data.id,
         };
-        console.log(resData, "------- 41");
+        console.log(resData, "------- 24");
         axios
           .post("/verify", resData)
           .then((res) => {
-            console.log(res.data, "---------45");
+            console.log(res.data, "---------25");
           })
           .catch((err) => {
-            console.log(err, "Error->48");
+            console.log(err, "Error->26");
           });
       },
     };
@@ -72,7 +74,8 @@ const UserBookings = () => {
     axios
       .post("/orders", _data)
       .then((res) => {
-        console.log(res.data, "45");
+        console.log(res.data, "21");
+        console.log(res.data.data, "22");
         handleOpenRazorpay(res.data.data);
       })
       .catch((err) => {
