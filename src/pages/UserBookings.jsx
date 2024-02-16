@@ -17,9 +17,11 @@ const UserBookings = () => {
       .get("/bookings")
       .then((response) => {
         setBookings(response.data);
+        console.log(response.data)
       })
       .catch((err) => {
         console.log(err);
+
       });
   }, []);
 
@@ -37,7 +39,7 @@ const UserBookings = () => {
   }
 
   const handleOpenRazorpay = (data) => {
-    console.log(data, "45");
+    console.log(data.id, "------41");
 
     const options = {
       key: "rzp_test_Vg2BUBiHC0s56u",
@@ -49,7 +51,7 @@ const UserBookings = () => {
       handler: function (response) {
         console.log(response, "------23");
         const resData = {
-          razorpay_order_id: response.razorpay_order_id,
+          razorpay_order_id: data.id,
           razorpay_payment_id: response.razorpay_payment_id,
           razorpay_signature: response.razorpay_signature,
           order_id: data.id,
@@ -66,6 +68,15 @@ const UserBookings = () => {
       },
     };
     const rzp1 = new window.Razorpay(options);
+    rzp1.on('payment.failed', function (response) {
+      alert(response.error.code);
+      alert(response.error.description);
+      alert(response.error.source);
+      alert(response.error.step);
+      alert(response.error.reason);
+      alert(response.error.metadata.order_id);
+      alert(response.error.metadata.payment_id);
+    });
     rzp1.open();
   };
 
