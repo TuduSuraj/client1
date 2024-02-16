@@ -44,7 +44,7 @@ const IndexPage = () => {
   };
 
   return (
-    <div className="flex flex-row justify-betweens">
+    <div className="flex flex-row justify-between">
       <div className="basis-[20%] container pt-10 mt-8 w-full ml-10  ">
         <div className="m-auto text-white pt-4 pb-8 rounded-2xl bg-gradient-to-r from-[#2f4662] f6rom-20% via-[#233245] via-0% to-[#305582] to-90">
           <div className="text-lg mt-[2rem] ml-[2rem] pt-1 bg-gradient-to-r from-[#2f4662] f6rom-20% via-[#233245] via-0% to-[#305582] to-90%">Price per night</div>
