@@ -39,7 +39,7 @@ const ListingPage = () => {
           {place?.photos?.length > 0 &&
             place.photos.map((photo) => (
               <div key={photo}>
-                <img src={"http://localhost:4000/uploads/" + photo} alt="" />
+                <img src={"https://api1-woad.vercel.app/uploads/" + photo} alt="" />
               </div>
             ))}{" "}
         </div>
@@ -67,7 +67,7 @@ const ListingPage = () => {
                   <img
                     onClick={() => setShowAllPhotos(true)}
                     className="cursor-pointer aspect-square object-cover"
-                    src={"http://localhost:4000/uploads/" + place.photos[0]}
+                    src={"https://api1-woad.vercel.app/uploads/" + place.photos[0]}
                   />
                 </div>
               )}
@@ -78,7 +78,7 @@ const ListingPage = () => {
                 <img
                   onClick={() => setShowAllPhotos(true)}
                   className="cursor-pointer aspect-square object-cover"
-                  src={"http://localhost:4000/uploads/" + place.photos[1]}
+                  src={"https://api1-woad.vercel.app/uploads/" + place.photos[1]}
                 />
               )}
 
@@ -87,7 +87,7 @@ const ListingPage = () => {
                   <img
                     onClick={() => setShowAllPhotos(true)}
                     className="cursor-pointer aspect-square object-cover relative top-2"
-                    src={"http://localhost:4000/uploads/" + place.photos[2]}
+                    src={"https://api1-woad.vercel.app/uploads/" + place.photos[2]}
                   />
                 )}
               </div>
