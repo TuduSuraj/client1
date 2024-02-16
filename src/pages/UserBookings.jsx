@@ -12,12 +12,13 @@ const UserBookings = () => {
   const [bookings, setBookings] = useState([]);
   const [payButtonActive, setPayButton] = useState(false);
 
+
   useEffect(() => {
     axios
       .get("/bookings")
       .then((response) => {
         setBookings(response.data);
-        console.log(response.data)
+        console.log(response.data);
       })
       .catch((err) => {
         console.log(err);
@@ -38,8 +39,12 @@ const UserBookings = () => {
     }
   }
 
-  const handleOpenRazorpay = (data) => {
+  const handleOpenRazorpay = (bookingData) => {
+    const data = bookingData.data;
+
     console.log(data.id, "------41");
+    console.log(bookingData.bookingId, "-----bookingId");
+
 
     const options = {
       key: "rzp_test_Vg2BUBiHC0s56u",
@@ -55,6 +60,7 @@ const UserBookings = () => {
           razorpay_payment_id: response.razorpay_payment_id,
           razorpay_signature: response.razorpay_signature,
           order_id: data.id,
+          bookingId: bookingData.bookingId,
         };
         console.log(resData, "------- 24");
         axios
@@ -80,14 +86,20 @@ const UserBookings = () => {
     rzp1.open();
   };
 
-  const handlePayment = (amount) => {
-    const _data = { amount: amount };
+  const handlePayment = (booking) => {
+
+
+    const _data = { amount: booking.price };
     axios
       .post("/orders", _data)
       .then((res) => {
         console.log(res.data, "21");
-        console.log(res.data.data, "22");
-        handleOpenRazorpay(res.data.data);
+        console.log(booking, "22");
+        const bookingData = {
+          data: res.data.data,
+          bookingId: booking._id
+        }
+        handleOpenRazorpay(bookingData);
       })
       .catch((err) => {
         console.log(err);
@@ -97,7 +109,7 @@ const UserBookings = () => {
   return (
     <div>
       <AccountNav />
-      <div className="grid gap-2 lg:px-20 lg:py-10 ">
+      <div className="grid gap-2 lg:px-[12rem] lg:py-10 ">
         {bookings?.length > 0 &&
           bookings.map((booking) => (
             <div
@@ -106,7 +118,7 @@ const UserBookings = () => {
               }}
               to={"/place/" + booking.place._id}
               className=" cursor-pointer relative flex gap-4 bg-gray-200 rounded-2xl overflow-hidden"
-              key={booking.id}
+              key={booking._id}
             >
               <div className=" w-52">
                 <PlaceImg place={booking.place} />
@@ -137,14 +149,15 @@ const UserBookings = () => {
                 onMouseLeave={handleMouseLeave}
                 className="  absolute bottom-10 right-12 "
               >
-                <button
+                {booking.payment !== "paid" ? (<button
                   onClick={() => {
-                    handlePayment(booking.price);
+                    handlePayment(booking);
                   }}
                   className=" bg-purple-500 hover:bg-purple-700 text-white text-md rounded-xl p-1"
                 >
                   Pay Now
-                </button>
+                </button>) : (<div className=" bg-pink-500  text-white text-md rounded-xl px-4 py-1">paid</div>)}
+
               </div>
             </div>
           ))}
