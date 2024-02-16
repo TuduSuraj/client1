@@ -7,6 +7,9 @@ export default {
         primary: "#F5385D",
         secondary: "#F01F48",
       },
+      screens: {
+        "custom-md": "1030px", // Define your custom breakpoint here
+      },
     },
   },
   plugins: [],

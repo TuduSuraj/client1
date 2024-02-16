@@ -44,8 +44,8 @@ const IndexPage = () => {
   };
 
   return (
-    <div className="flex flex-row justify-between">
-      <div className="basis-[20%] container pt-10 mt-8 w-full ml-10  ">
+    <div className="flex flex-row justify-between content-center">
+      <div className="basis-[20%] container pt-10 mt-8 w-full ml-10 hidden custom-md:inline ">
         <div className="m-auto text-white pt-4 pb-8 rounded-2xl bg-gradient-to-r from-[#2f4662] f6rom-20% via-[#233245] via-0% to-[#305582] to-90">
           <div className="text-lg mt-[2rem] ml-[2rem] pt-1 bg-gradient-to-r from-[#2f4662] f6rom-20% via-[#233245] via-0% to-[#305582] to-90%">Price per night</div>
           <div className="text-lg mt-4 ml-[3rem] font-sans">
@@ -80,7 +80,7 @@ const IndexPage = () => {
           </div>
         </div>
       </div>
-      <div className="basis-[80%]  mt-8  grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3  lg:grid-cols-4 lg:p-10 ">
+      <div className="basis-[80%]  mt-8 m-auto grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3  lg:grid-cols-4 lg:p-10  ">
         {places.length > 0 &&
           places.map((place) => (
             <div
