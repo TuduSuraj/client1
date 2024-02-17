@@ -80,7 +80,7 @@ export default function PhotosUploader({ addedPhotos, setAddedPhotos }) {
             <div className="h-32 flex relative " key={link}>
               <img
                 className="rounded-2xl w-full object-cover"
-                src={"https://api1-woad.vercel.app/uploads/" + link}
+                src={"https://api1-flax.vercel.app/uploads/" + link}
                 alt=""
               />
               <button

@@ -113,13 +113,13 @@ const IndexPage = () => {
                         <img
                           className="rounded-2xl object-cover aspect-square"
                           key={s}
-                          src={"https://api1-woad.vercel.app/uploads/" + s}
+                          src={"https://api1-flax.vercel.app/uploads/" + s}
                         />
                       ))}
                     </Carousel>
                     {/* <img
              className="rounded-2xl object-cover aspect-square"
-             src={"https://api1-woad.vercel.app/uploads/" + place.photos?.[0]}
+             src={"https://api1-flax.vercel.app/uploads/" + place.photos?.[0]}
            />
             */}
                   </div>

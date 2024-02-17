@@ -8,7 +8,7 @@ const PlaceImg = ({ place, index = 0, className = null }) => {
   return (
     <img
       className={className}
-      src={"https://api1-woad.vercel.app/uploads/" + place.photos[index]}
+      src={"https://api1-flax.vercel.app/uploads/" + place.photos[index]}
       alt=""
     />
   );

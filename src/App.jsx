@@ -13,7 +13,7 @@ import ListingPage from "./pages/ListingPage";
 import UserBookings from "./pages/UserBookings";
 import RegisterAsOwner from "./pages/RegisterAsOwner";
 
-axios.defaults.baseURL = "https://api1-woad.vercel.app";
+axios.defaults.baseURL = "https://api1-flax.vercel.app";
 axios.defaults.withCredentials = true;
 
 function App() {
